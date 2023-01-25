@@ -1,0 +1,24 @@
+.card {
+    width: 60%;
+    margin: 1.5rem auto;
+    border: 1px solid black;
+    display: flex;
+    box-shadow: 5px 5px 5px rgba(155, 146, 146, 0.719);
+    border-radius: 5px;
+}
+
+.content {
+    margin-left: 1rem;
+    padding: 1rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .card {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .card img {
+        width: auto;
+    }
+  }

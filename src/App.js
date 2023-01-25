@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
+import { SwipeAble } from "./components/SwipeAble";
+import { MainSection } from "./components/MainSection";
 
 function App() {
+  const [category, setCategory] = useState("all");
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(10);
+
+  useEffect(() => {
+    async function fetchdata() {
+      const data = await fetch(
+        `https://inshorts.deta.dev/news?category=${category}`
+      );
+      const res = await data.json();
+      setData(res.data);
+      console.log(res.data);
+    }
+    fetchdata();
+  }, [category, loading]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SwipeAble setCategory = { setCategory } />
+      <MainSection loading={loading} setLoading={setLoading} data={data} />
     </div>
   );
 }
