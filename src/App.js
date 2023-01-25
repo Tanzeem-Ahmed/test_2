@@ -6,7 +6,6 @@ import { MainSection } from "./components/MainSection";
 function App() {
   const [category, setCategory] = useState("all");
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(10);
 
   useEffect(() => {
     async function fetchdata() {
@@ -18,12 +17,12 @@ function App() {
       console.log(res.data);
     }
     fetchdata();
-  }, [category, loading]);
+  }, [category]);
 
   return (
     <div className="App">
       <SwipeAble setCategory = { setCategory } />
-      <MainSection loading={loading} setLoading={setLoading} data={data} />
+      <MainSection data={data} />
     </div>
   );
 }

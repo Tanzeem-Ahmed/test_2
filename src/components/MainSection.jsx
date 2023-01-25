@@ -2,7 +2,7 @@ import React from 'react'
 import { ContentCard } from './ContentCard';
 import './main.css';
 
-export const MainSection = ({loading, setLoading, data}) => {
+export const MainSection = ({data}) => {
   return (
     <div className='main'>
     {
